@@ -1,0 +1,1 @@
+"""MemorySnapshot 装配。"""

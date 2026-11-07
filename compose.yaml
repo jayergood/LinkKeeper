@@ -1,0 +1,22 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: relationship-agent-db
+    environment:
+      POSTGRES_USER: relationship
+      POSTGRES_PASSWORD: relationship
+      POSTGRES_DB: relationship
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./docker/init:/docker-entrypoint-initdb.d:ro
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U relationship -d relationship"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+    restart: unless-stopped
+
+volumes:
+  pgdata:

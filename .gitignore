@@ -218,3 +218,17 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# ---- 项目特有 ----
+*.py[cod]
+.venv/
+.env.local
+data/
+logs/
+evals/runs/
+*.pdf
+resume/
+.idea/
+.vscode/
+*.swp
+.DS_Store
