@@ -152,6 +152,34 @@ async def make_memory(
     return str(row["id"])
 
 
+async def make_evidence(
+    db: Db,
+    *,
+    thread_id: str | None = None,
+    contact_id: str | None = None,
+    evidence_type: str = "user_note",
+    summary: str = "用户说张三公司改成腾讯",
+    content: str | None = None,
+) -> str:
+    """插入一条证据，返回 id。提案的 evidence_ids 必须是真实存在的证据。"""
+    row = await db.execute_returning(
+        """
+        INSERT INTO evidence (thread_id, contact_id, type, content, source_summary)
+        VALUES (:tid, :cid, :type, :content, :summary)
+        RETURNING id
+        """,
+        {
+            "tid": thread_id,
+            "cid": contact_id,
+            "type": evidence_type,
+            "content": content if content is not None else summary,
+            "summary": summary,
+        },
+    )
+    assert row is not None
+    return str(row["id"])
+
+
 async def make_insight(
     db: Db,
     contact_id: str,

@@ -42,13 +42,13 @@ python -m src.main
 | P1 | 领域模型 + 自研 tool loop + 五维运行预算 | ✅ |
 | P2 | 证据层 + MemorySnapshot 装配与渲染 | ✅ |
 | P3 | 问卷可恢复暂停（配对补齐、失败可重提） | ✅ |
-| P4 | Action Card 三态 + 四重幂等 | 进行中 |
+| P4 | Action Card：提案 / 确认 / 回执三态，CAS 抢占幂等 | ✅ |
 | P5 | 记忆分层 + 人工审核 | 计划中 |
 | P6 | 会话压缩 + Insight Agent | 计划中 |
 | P7 | 40 条评测用例 + Langfuse | 计划中 |
 | P8 | 单页前端 + 端到端 | 计划中 |
 
-当前测试：`60 passed`
+当前测试：`73 passed`
 
 ## 技术栈
 

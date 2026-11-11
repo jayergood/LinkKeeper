@@ -39,9 +39,14 @@ _CURRENT_TIME = ToolDef(
 
 def build_tools(ctx: ToolContext) -> list[ToolDef]:
     """构建本轮可用工具清单。"""
+    from .action import build_action_tool
     from .questionnaire import build_questionnaire_tool
 
-    tools: list[ToolDef] = [_CURRENT_TIME, build_questionnaire_tool(ctx)]
+    tools: list[ToolDef] = [
+        _CURRENT_TIME,
+        build_questionnaire_tool(ctx),
+        build_action_tool(ctx),
+    ]
     return tools
 
 
